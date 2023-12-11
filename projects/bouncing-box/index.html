@@ -63,6 +63,9 @@
 			
 			// TODO 2 - Variable declarations 
 			
+var positionX = 0;
+var speed = 10;
+var points = 0;
 
 			
 			/* 
@@ -71,7 +74,17 @@
 			turn it around! 
 			*/
 			function update() {
-				
+				positionX = positionX + speed;
+				if(positionX > boardWidth){
+					speed = speed * -1
+					
+				}
+				if(positionX < 0){
+					speed = speed * -1
+					
+				}
+				moveBoxTo(positionX);
+
 
 			};
 
@@ -81,9 +94,16 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
+				points = points + 1;
+				changeBoxText(points);
+				positionX = 0;
+				if(speed > 0){
 				
-
-
+				speed = speed + 3
+				}
+				if(speed < 0 ) {
+					speed = speed - 3
+				}
 			};
 		})();
 	</script>
